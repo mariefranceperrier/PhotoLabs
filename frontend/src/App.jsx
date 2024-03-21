@@ -16,13 +16,13 @@ const sampleDataForPhotoListItem = {
 };
 
 const generatePhotoListItems = (count, sampleData) => {
-  return Array(count).fill().map((_, index) => (
+  return Array(count).fill().map(() => (
     <PhotoListItem
-      key={index}
-      imageSource={sampleDataForPhotoListItem.imageSource}
-      profile={sampleDataForPhotoListItem.profile}
-      username={sampleDataForPhotoListItem.username}
-      location={sampleDataForPhotoListItem.location}
+      key={sampleData.id}
+      imageSource={sampleData.imageSource}
+      profile={sampleData.profile}
+      username={sampleData.username}
+      location={sampleData.location}
     />
   ));
 }
