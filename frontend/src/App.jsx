@@ -8,7 +8,7 @@ const sampleDataForPhotoListItem = {
   id: "1",
   location: {
     city: "Montreal",
-    country: "Canada",
+    country: " Canada",
   },
   imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
   username: "Joe Example",
@@ -19,7 +19,11 @@ const sampleDataForPhotoListItem = {
 const App = () => {
   return (
     <div className="App">
-      <PhotoListItem sampleDataForPhotoListItem={sampleDataForPhotoListItem} />
+      <PhotoListItem
+        imageSource={sampleDataForPhotoListItem.imageSource}
+        profile={sampleDataForPhotoListItem.profile}
+        username={sampleDataForPhotoListItem.username}
+        location={sampleDataForPhotoListItem.location} />
     </div>
   );
 };
