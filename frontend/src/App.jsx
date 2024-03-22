@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {Fragment} from 'react';
+import './App.scss';
 
 import PhotoListItem from './components/PhotoListItem';
-import './App.scss';
+import PhotoFavButton from 'components/PhotoFavButton';
 
 
 const sampleDataForPhotoListItem = {
@@ -17,13 +18,15 @@ const sampleDataForPhotoListItem = {
 
 const generatePhotoListItems = (count, sampleData) => {
   return Array(count).fill().map((_, index) => (
-    <PhotoListItem
-      key={sampleData.id + index}
-      imageSource={sampleData.imageSource}
-      profile={sampleData.profile}
-      username={sampleData.username}
-      location={sampleData.location}
-    />
+    <Fragment key={sampleData.id + index}>
+      <PhotoFavButton />
+      <PhotoListItem
+        imageSource={sampleData.imageSource}
+        profile={sampleData.profile}
+        username={sampleData.username}
+        location={sampleData.location}
+      />
+    </Fragment>
   ));
 }
 
