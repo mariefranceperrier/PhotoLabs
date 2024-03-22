@@ -19,7 +19,6 @@ const sampleDataForPhotoListItem = {
 const generatePhotoListItems = (count, sampleData) => {
   return Array(count).fill().map((_, index) => (
     <Fragment key={sampleData.id + index}>
-      <PhotoFavButton />
       <PhotoListItem
         imageSource={sampleData.imageSource}
         profile={sampleData.profile}
