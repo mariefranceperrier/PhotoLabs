@@ -12,7 +12,7 @@ const PhotoListItem = (props) => {
       <img
         className="photo-list__image"
         src={props.imageSource}
-        alt="A picture of Montreal"
+        alt="A picture"
       />
       <div className="photo-list__details">
         <img
