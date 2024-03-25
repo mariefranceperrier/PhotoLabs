@@ -1,14 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 
 const PhotoListItem = (props) => {
-  /* Insert React */
+  const [isFavorite, setIsFavorite] = useState(false);
+  const handleFavorite = () => {
+    setIsFavorite(prevState => !prevState);
+  };
+
   return (
     <div className="photo-list__item">
-      <PhotoFavButton />
+      <PhotoFavButton
+        isFavorite={isFavorite}
+        handleFavorite={handleFavorite}/>
       <img
         className="photo-list__image"
         src={props.imageSource}
