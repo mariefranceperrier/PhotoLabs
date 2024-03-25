@@ -5,15 +5,15 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 const PhotoListItem = (props) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+  
   const handleFavorite = () => {
-    setIsFavorite(prevState => !prevState);
+    props.handleFavorite();
   };
 
   return (
     <div className="photo-list__item">
       <PhotoFavButton
-        isFavorite={isFavorite}
+        isFavorite={props.isFavorite}
         handleFavorite={handleFavorite}/>
       <img
         className="photo-list__image"

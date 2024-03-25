@@ -18,9 +18,7 @@ const HomeRoute = ({ photos, topics }) => {
 
   return (
     <div className="home-route">
-      <TopNavigation
-        topics={topics}
-        favoritePhotos={favoritePhotos} />
+      <TopNavigation topics={topics} favoritePhotos={favoritePhotos} />
       <PhotoList
         photos={photos}
         handleFavorite={handleFavorite}
