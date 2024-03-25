@@ -27,7 +27,7 @@ const TopicList = () => {
       {sampleDataForTopicList.map((topic) => (
         <TopicListItem
           key={topic.id}
-          title={topic.title} />
+          label={topic.title} />
       ))}
     </div>
   );
