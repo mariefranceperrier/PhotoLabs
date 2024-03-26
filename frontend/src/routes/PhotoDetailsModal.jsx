@@ -6,10 +6,13 @@ import PhotoList from 'components/PhotoList';
 
 
 const PhotoDetailsModal = (props) => {
-  
+  const handleCloseModal = () => {
+    props.setDisplayModal(false); // This is the function that will close the modal
+  };
+
   return (
     <div className="photo-details-modal">
-      <button className="photo-details-modal__close-button">
+      <button className="photo-details-modal__close-button" onClick={handleCloseModal}>
         <img src={closeSymbol} alt="close symbol" />  
       </button>
       <img
@@ -33,7 +36,7 @@ const PhotoDetailsModal = (props) => {
           </div>
         </div>
       </div>
-        <span className=".photo-details-modal__header">Similar Photos</span>
+        <span className="photo-details-modal__header">Similar Photos</span>
           <PhotoList/>
     </div>
   )
