@@ -10,8 +10,12 @@ const PhotoListItem = (props) => {
     props.handleFavorite();
   };
 
+  const handleModalDisplay = () => {
+    props.setDisplayModal(true);
+  };
+
   return (
-    <div className="photo-list__item">
+    <div className="photo-list__item" onClick={handleModalDisplay}>
       <PhotoFavButton
         isFavorite={props.isFavorite}
         handleFavorite={handleFavorite}/>

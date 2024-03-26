@@ -5,7 +5,7 @@ import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
 
-const HomeRoute = ({ photos, topics }) => {
+const HomeRoute = ({ photos, topics, setDisplayModal }) => {
   const [favoritePhotos, setFavoritePhotos] = useState([]);
 
   const handleFavorite = (photoId) => {
@@ -22,7 +22,9 @@ const HomeRoute = ({ photos, topics }) => {
       <PhotoList
         photos={photos}
         handleFavorite={handleFavorite}
-        favoritePhotos={favoritePhotos} />
+        favoritePhotos={favoritePhotos}
+        setDisplayModal={setDisplayModal}
+      />
     </div>
   );
 };
