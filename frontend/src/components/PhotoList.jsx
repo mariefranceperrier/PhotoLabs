@@ -4,7 +4,7 @@ import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
 
-const PhotoList = ({photos, handleFavorite, favoritePhotos, setDisplayModal}) => {
+const PhotoList = ({photos, handleFavorite, favoritePhotos, setModalData}) => {
   return (
     <ul className="photo-list">
       {photos.map((photo) => (
@@ -16,8 +16,8 @@ const PhotoList = ({photos, handleFavorite, favoritePhotos, setDisplayModal}) =>
           location={photo.location}
           isFavorite={favoritePhotos.includes(photo.id)}
           handleFavorite={() => handleFavorite(photo.id)}
-          setDisplayModal={setDisplayModal}
-          setSinglePhotoDetail={setSinglePhotoDetail}
+          setModalData={setModalData}
+          photo={photo}
           />
       ))}
     </ul>
