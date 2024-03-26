@@ -15,7 +15,7 @@ const PhotoListItem = (props) => {
   };
 
   return (
-    <div className="photo-list__item" onClick={handleModalDisplay}>
+    <div className="photo-list__item">
       <PhotoFavButton
         isFavorite={props.isFavorite}
         handleFavorite={handleFavorite}/>
@@ -27,6 +27,7 @@ const PhotoListItem = (props) => {
       <div className="photo-list__details">
         <img
           className="photo-list__profile"
+          onClick={handleModalDisplay}
           src={props.profile}
           alt="Profile"
         />
