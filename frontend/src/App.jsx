@@ -18,7 +18,7 @@ const App = () => {
         topics={topics}
         setDisplayModal={setDisplayModal} 
       />
-      {displayModal && <PhotoDetailsModal photo={photos}></PhotoDetailsModal>}
+      {displayModal && <PhotoDetailsModal setDisplayModal={setDisplayModal}/>}
     </div>
   );
 };
