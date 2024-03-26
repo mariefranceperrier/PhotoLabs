@@ -17,6 +17,7 @@ const PhotoList = ({photos, handleFavorite, favoritePhotos, setDisplayModal}) =>
           isFavorite={favoritePhotos.includes(photo.id)}
           handleFavorite={() => handleFavorite(photo.id)}
           setDisplayModal={setDisplayModal}
+          setSinglePhotoDetail={setSinglePhotoDetail}
           />
       ))}
     </ul>

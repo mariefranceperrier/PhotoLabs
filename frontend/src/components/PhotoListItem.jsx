@@ -11,7 +11,7 @@ const PhotoListItem = (props) => {
   };
 
   const handleModalDisplay = () => {
-    props.setDisplayModal(true);
+    props.setSinglePhotoDetail(props.photo);
   };
 
   return (

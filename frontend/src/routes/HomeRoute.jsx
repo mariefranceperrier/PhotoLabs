@@ -24,6 +24,7 @@ const HomeRoute = ({ photos, topics, setDisplayModal }) => {
         handleFavorite={handleFavorite}
         favoritePhotos={favoritePhotos}
         setDisplayModal={setDisplayModal}
+        setSinglePhotoDetail={setSinglePhotoDetail}
       />
     </div>
   );

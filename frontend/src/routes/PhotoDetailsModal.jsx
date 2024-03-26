@@ -6,6 +6,8 @@ import PhotoList from 'components/PhotoList';
 
 
 const PhotoDetailsModal = (props) => {
+  console.log('Single Photo Detail:', props.singlePhotoDetail);
+
   const handleCloseModal = () => {
     props.setDisplayModal(false); // This is the function that will close the modal
   };
@@ -17,22 +19,22 @@ const PhotoDetailsModal = (props) => {
       </button>
       <img
         className="photo-details-modal__image"
-        src={props.imageSource}
+        src={props.singlePhotoDetail.imageSource}
         alt="A picture"
       />
       <div className="photo-details-modal__top-bar">
         <img
           className="photo-details-modal__photograper-profile"
-          src={props.profile}
+          src={props.singlePhotoDetail.profile}
           alt="Profile"
         />
         <div className="photo-details-modal__photographer-details">
           <div className="photo-details-modal__photographer-info">
-            <span>{props.username}</span>
+            <span>{props.singlePhotoDetail.username}</span>
           </div>
           <div className="photo-details-modal__photographer-location">
-            <span>{props.location.city}</span>
-            <span>{props.location.country}</span>
+            <span>{props.singlePhotoDetail.location.city}</span>
+            <span>, {props.singlePhotoDetail.location.country}</span>
           </div>
         </div>
       </div>
