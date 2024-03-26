@@ -18,7 +18,7 @@ const App = () => {
         topics={topics}
         setModalData={setModalData}
       />
-      {modalData && <PhotoDetailsModal modalData={modalData} setModalData={setModalData} photos={photos} />}
+      {modalData && <PhotoDetailsModal modalData={modalData} setModalData={setModalData} />}
     </div>
   );
 };
