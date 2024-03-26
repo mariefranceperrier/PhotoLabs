@@ -15,7 +15,7 @@ const PhotoDetailsModal = (props) => {
       <button className="photo-details-modal__close-button" onClick={handleCloseModal}>
         <img src={closeSymbol} alt="close symbol" />  
       </button>
-      {/* <img
+      <img
         className="photo-details-modal__image"
         src={props.imageSource}
         alt="A picture"
@@ -37,7 +37,7 @@ const PhotoDetailsModal = (props) => {
         </div>
       </div>
         <span className="photo-details-modal__header">Similar Photos</span>
-          <PhotoList/> */}
+          <PhotoList/>
     </div>
   )
 };
