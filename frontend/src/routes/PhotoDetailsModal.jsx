@@ -5,14 +5,14 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
 
 
-const PhotoDetailsModal = (props) => {
-  console.log('Modal Data:', props.modalData);
-
-  const {modalData, setModalData, photos} = props;
-
+const PhotoDetailsModal = ({ modalData, setModalData, photos }) => {
+  
   const handleCloseModal = () => {
-    props.setModalData(null); // Close the modal by setting modalData to null
+    setModalData(null); // Close the modal by setting modalData to null
   };
+
+  const selectedCity = modalData && modalData.location.city;
+  const similarPhotos = photos.filter(photo => photo.location.city === selectedCity);
 
   return (
     <div className="photo-details-modal">
@@ -20,33 +20,33 @@ const PhotoDetailsModal = (props) => {
         <img src={closeSymbol} alt="close symbol" />  
       </button>
       {modalData && ( // Render content only if modalData is not null
-        <>
+
+        <div className="photo-details-modal__top-bar">
           <img
             className="photo-details-modal__image"
             src={modalData.imageSource}
-            alt="A picture"
+            alt="Selected photo"
           />
-          <div className="photo-details-modal__top-bar">
+            <div className="photo-details-modal__photographer-info">
             <img
               className="photo-details-modal__photograper-profile"
               src={modalData.profile}
               alt="Profile"
             />
             <div className="photo-details-modal__photographer-details">
-              <div className="photo-details-modal__photographer-info">
+              <div>
                 <span>{modalData.username}</span>
               </div>
               <div className="photo-details-modal__photographer-location">
-                <span>{modalData.location.city}</span>
-                <span>, {modalData.location.country}</span>
+                <span>{modalData.location.city}, {modalData.location.country}</span>
               </div>
             </div>
-          </div>
           <span className="photo-details-modal__header">Similar Photos</span>
-          <div className="photo-details-modal__similar-photos">
-            <PhotoList photos={photos} setModalData={setModalData} />
+            <div className="photo-details-modal__images">
+              <PhotoList photos={similarPhotos} setModalData={setModalData} />
+            </div>
           </div>
-        </>
+        </div> 
       )}
     </div>
   );
