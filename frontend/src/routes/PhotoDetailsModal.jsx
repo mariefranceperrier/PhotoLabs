@@ -34,7 +34,7 @@ const PhotoDetailsModal = (props) => {
             />
               <div >
                 <h2 className="photo-details-modal__photographer-info">{modalData.user.username}</h2>
-                <h2 className="photo-details-modal__photographer-location">{modalData.location.city}, {modalData.location.country}</h2>
+                <span className="photo-details-modal__photographer-location">{modalData.location.city}, {modalData.location.country}</span>
               </div>
             </div>
         </div>

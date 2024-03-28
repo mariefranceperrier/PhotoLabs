@@ -63,6 +63,7 @@ gap:30px;
 
 .photo-details-modal__photographer-location {
   color: #838383;
+  font-size: 20px;
   margin-left: 14px;
   margin-top: 0;
 }
@@ -70,15 +71,16 @@ gap:30px;
   object-fit: cover;
   border-radius: 100%;
   vertical-align: middle;
+  margin-top: 4px;
   margin-right: 8px;
-  width: 80px;
-  height: 80px;
+  width: 75px;
+  height: 75px;
 }
 
 .photo-details-modal__photographer-info {
-  margin-top: 8px;
   font-weight: 700;
-  // font-size: 16px;
-  margin-left: 14px;
+  font-size: 22px;
+  margin-top: 10px;
   margin-bottom: 6px;
+  margin-left: 14px;
 }

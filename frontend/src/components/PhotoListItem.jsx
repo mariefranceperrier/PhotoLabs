@@ -7,7 +7,7 @@ import PhotoFavButton from "./PhotoFavButton";
 const PhotoListItem = (props) => {
   
   const handleFavorite = () => {
-    props.handleFavorite(props.photo.id);
+    props.handleFavorite();
   };
 
   const handleModalDisplay = () => {
@@ -36,8 +36,7 @@ const PhotoListItem = (props) => {
             <span>{props.username}</span>
           </div>
           <div className="photo-list__location">
-            <span>{props.location.city}</span>
-            <span>, {props.location.country}</span>
+            <span>{props.location.city}, {props.location.country}</span>
           </div>
         </div> 
       </div>
