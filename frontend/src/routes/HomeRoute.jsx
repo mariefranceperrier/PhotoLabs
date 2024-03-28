@@ -5,16 +5,8 @@ import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
 
-const HomeRoute = ({ photos, topics, setModalData }) => {
-  const [favoritePhotos, setFavoritePhotos] = useState([]);
-
-  const handleFavorite = (photoId) => {
-    if (favoritePhotos.includes(photoId)) {
-      setFavoritePhotos(prevPhotos => prevPhotos.filter(id => id !== photoId));
-    } else {
-      setFavoritePhotos(prevPhotos => [...prevPhotos, photoId]);
-    }
-  };
+const HomeRoute = (props) => {
+  const { photos, topics, setModalData, favoritePhotos, handleFavorite } = props;
 
   return (
     <div className="home-route">

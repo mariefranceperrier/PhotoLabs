@@ -4,7 +4,9 @@ import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
 
-const PhotoList = ({photos, handleFavorite, favoritePhotos, setModalData}) => {
+const PhotoList = (props) => {
+  const { photos, handleFavorite, favoritePhotos, setModalData } = props;
+  
   return (
     <ul className="photo-list">
       {photos.map((photo) => (

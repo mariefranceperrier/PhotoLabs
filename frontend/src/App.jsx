@@ -10,6 +10,15 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   const [modalData, setModalData] = useState(null);
+  const [favoritePhotos, setFavoritePhotos] = useState([]);
+
+  const handleFavorite = (photoId) => {
+    if (favoritePhotos.includes(photoId)) {
+      setFavoritePhotos(prevPhotos => prevPhotos.filter(id => id !== photoId));
+    } else {
+      setFavoritePhotos(prevPhotos => [...prevPhotos, photoId]);
+    }
+  };
 
   return (
     <div className="App">
@@ -17,8 +26,17 @@ const App = () => {
         photos={photos}
         topics={topics}
         setModalData={setModalData}
+        favoritePhotos={favoritePhotos}
+        handleFavorite={handleFavorite}
       />
-      {modalData && <PhotoDetailsModal modalData={modalData} setModalData={setModalData} />}
+      {modalData && (
+        <PhotoDetailsModal
+          modalData={modalData}
+          setModalData={setModalData}
+          favoritePhotos={favoritePhotos}
+          handleFavorite={handleFavorite}
+        />
+      )}
     </div>
   );
 };

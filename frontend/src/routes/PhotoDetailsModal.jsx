@@ -7,7 +7,7 @@ import PhotoFavButton from 'components/PhotoFavButton';
 
 
 const PhotoDetailsModal = (props) => {
-  const { modalData, setModalData, isFavorite, favoritePhotos, handleFavorite } = props;
+  const { modalData, setModalData, favoritePhotos, handleFavorite } = props;
   const handleCloseModal = () => {
     setModalData(null); // Close the modal by setting modalData to null
   };
@@ -19,7 +19,7 @@ const PhotoDetailsModal = (props) => {
         </button>
       <div className="photo-details-modal__top-bar">
         <PhotoFavButton
-          isFavorite={isFavorite}
+          isFavorite={favoritePhotos.includes(modalData.id)}
           handleFavorite={() => handleFavorite(modalData.id)} />
           <img
             className="photo-details-modal__image"
@@ -44,7 +44,7 @@ const PhotoDetailsModal = (props) => {
                 photos={Object.values(modalData.similar_photos)}
                 setModalData={setModalData}
                 handleFavorite={handleFavorite}
-                favoritePhotos={[]}
+                favoritePhotos={favoritePhotos}
               />
             </div>
     </div>
