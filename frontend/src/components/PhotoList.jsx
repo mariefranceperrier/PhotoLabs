@@ -14,7 +14,7 @@ const PhotoList = (props) => {
           key={photo.id}
           imageSource={photo.urls.regular}
           profile={photo.user.profile}
-          username={photo.user.username}
+          username={photo.user.name}
           location={photo.location}
           isFavorite={favoritePhotos.includes(photo.id)}
           handleFavorite={() => handleFavorite(photo.id)}

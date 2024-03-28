@@ -23,13 +23,12 @@ const reducer = (state, action) => {
   }
 };
 
+const initialState = {
+  modalData: null,
+  favoritePhotos: [],
+};
 
 const useApplicationData = () => {
-  const initialState = {
-    modalData: null,
-    favoritePhotos: [],
-  };
-// useReducer to manag state and dispatch actions
   const [state, dispatch] = useReducer(reducer, initialState);
 
   // Action creators
