@@ -7,7 +7,7 @@ import PhotoFavButton from "./PhotoFavButton";
 const PhotoListItem = (props) => {
   
   const handleFavorite = () => {
-    props.handleFavorite();
+    props.handleFavorite(props.photo.id);
   };
 
   const handleModalDisplay = () => {

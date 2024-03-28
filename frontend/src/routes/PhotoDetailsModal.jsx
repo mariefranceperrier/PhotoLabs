@@ -3,21 +3,24 @@ import React from 'react';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
+import PhotoFavButton from 'components/PhotoFavButton';
 
 
 const PhotoDetailsModal = (props) => {
-  const { modalData, setModalData } = props;
+  const { modalData, setModalData, isFavorite, favoritePhotos, handleFavorite } = props;
   const handleCloseModal = () => {
     setModalData(null); // Close the modal by setting modalData to null
   };
-
 
   return (
     <div className="photo-details-modal">
         <button className="photo-details-modal__close-button" onClick={handleCloseModal}>
           <img src={closeSymbol} alt="close symbol" />  
         </button>
-        <div className="photo-details-modal__top-bar">
+      <div className="photo-details-modal__top-bar">
+        <PhotoFavButton
+          isFavorite={isFavorite}
+          handleFavorite={() => handleFavorite(modalData.id)} />
           <img
             className="photo-details-modal__image"
             src={modalData.urls.full}
@@ -40,7 +43,7 @@ const PhotoDetailsModal = (props) => {
               <PhotoList
                 photos={Object.values(modalData.similar_photos)}
                 setModalData={setModalData}
-                handleFavorite={null}
+                handleFavorite={handleFavorite}
                 favoritePhotos={[]}
               />
             </div>
