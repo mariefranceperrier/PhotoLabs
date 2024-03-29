@@ -18,6 +18,8 @@ const App = () => {
         setModalData={actions.setPhotoSelected}
         favoritePhotos={state.favoritePhotos}
         handleFavorite={actions.updateToFavPhotoIds}
+        actions={actions}
+        state={state}
       />
       {state.modalData && (
         <PhotoDetailsModal

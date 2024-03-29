@@ -6,17 +6,20 @@ const UPDATE_FAV_PHOTO_IDS = 'UPDATE_FAV_PHOTO_IDS';
 const CLOSE_MODAL = 'CLOSE_MODAL';
 const SET_PHOTO_DATA = 'SET_PHOTO_DATA'; 
 const SET_TOPIC_DATA = 'SET_TOPIC_DATA'; 
-const GET_PHOTOS_BY_TOPICS = 'GET_PHOTOS_BY_TOPICS';
+const SET_SELECTED_TOPIC = 'SET_SELECTED_TOPIC';
+const SET_PHOTOS_BY_TOPIC = 'SET_PHOTOS_BY_TOPIC';
 
 // Define reducer function
 const reducer = (state, action) => {
   switch (action.type) {
-    case GET_PHOTOS_BY_TOPICS:
-      return { ...state, topicData: action.payload };
     case SET_PHOTO_DATA:
       return { ...state, photoData: action.payload };
     case SET_TOPIC_DATA:
       return { ...state, topicData: action.payload };
+    case SET_SELECTED_TOPIC: 
+        return { ...state, selectedTopic: action.payload };
+    case SET_PHOTOS_BY_TOPIC:
+      return { ...state, photosByTopic: { ...state.photosByTopic, [action.payload.topicId]: action.payload.photos } };
     case SET_MODAL_DATA:
       return { ...state, modalData: action.payload };
     case UPDATE_FAV_PHOTO_IDS:
@@ -37,6 +40,8 @@ const initialState = {
   favoritePhotos: [],
   photoData: [],
   topicData: [],
+  selectedTopic: null,
+  photosByTopic: {},
 };
 
 const useApplicationData = () => {
@@ -60,25 +65,31 @@ const useApplicationData = () => {
       .then(response => response.json())
       .then((data) => dispatch({ type: SET_PHOTO_DATA, payload: data }));
   }, []);
-
+  
   useEffect(() => {
     fetch('/api/topics')
       .then(response => response.json())
       .then((data) => dispatch({ type: SET_TOPIC_DATA, payload: data }));
   }, []);
-
-  useEffect(() => {
-    fetch('/api/topics/photos/:topic_id')
+  
+  
+  const fetchPhotosByTopic = (topicId) => {
+    fetch(`/api/topics/photos/${topicId}`)
       .then(response => response.json())
-      .then((data) => dispatch({ type: GET_PHOTOS_BY_TOPICS, payload: data }));
-  }, []);
+      .then((data) => {
+        dispatch({ type: SET_SELECTED_TOPIC, payload: topicId }); 
+        dispatch({ type: SET_PHOTOS_BY_TOPIC, payload: { topicId, photos: data } })
+      })
+  };
+  
 
   return {
     state,
     actions: {
       setPhotoSelected,
       updateToFavPhotoIds,
-      onClosePhotoDetailsModal
+      onClosePhotoDetailsModal,
+      fetchPhotosByTopic
     }
   };
 };
