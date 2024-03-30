@@ -10,7 +10,11 @@ PhotoLabs is built using React for the frontend and Node.js for the backend. The
 ## Screenshots
 
 ![Homepage](https://github.com/mariefranceperrier/PhotoLabs/blob/main/docs/Homepage.png?raw=true)
+
+
 ![Favorite Icon](https://github.com/mariefranceperrier/PhotoLabs/blob/main/docs/FavIcon.png?raw=true)
+
+
 ![Modal-Selected Photo](https://github.com/mariefranceperrier/PhotoLabs/blob/main/docs/Modal.png?raw=true)
 
 
