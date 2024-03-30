@@ -72,17 +72,15 @@ const useApplicationData = () => {
       .then((data) => dispatch({ type: SET_TOPIC_DATA, payload: data }));
   }, []);
   
-  
   const fetchPhotosByTopic = (topicId) => {
     fetch(`/api/topics/photos/${topicId}`)
       .then(response => response.json())
       .then((data) => {
         dispatch({ type: SET_SELECTED_TOPIC, payload: topicId }); 
-        dispatch({ type: SET_PHOTOS_BY_TOPIC, payload: { topicId, photos: data } })
+        dispatch({ type: SET_PHOTOS_BY_TOPIC, payload: { topicId, photos: data } });
       })
   };
   
-
   return {
     state,
     actions: {

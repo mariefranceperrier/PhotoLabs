@@ -8,8 +8,9 @@ import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
   const { modalData, setModalData, favoritePhotos, handleFavorite } = props;
+  
   const handleCloseModal = () => {
-    setModalData(null); // Close the modal by setting modalData to null
+    setModalData(null); 
   };
 
   return (
