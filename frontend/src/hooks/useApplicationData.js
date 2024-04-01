@@ -1,13 +1,13 @@
 import {useReducer, useEffect} from 'react';
 
 // Define action types
-const SET_MODAL_DATA = 'SET_MODAL_DATA';
-const UPDATE_FAV_PHOTO_IDS = 'UPDATE_FAV_PHOTO_IDS';
-const CLOSE_MODAL = 'CLOSE_MODAL';
 const SET_PHOTO_DATA = 'SET_PHOTO_DATA'; 
 const SET_TOPIC_DATA = 'SET_TOPIC_DATA'; 
+const SET_MODAL_DATA = 'SET_MODAL_DATA';
 const SET_SELECTED_TOPIC = 'SET_SELECTED_TOPIC';
 const SET_PHOTOS_BY_TOPIC = 'SET_PHOTOS_BY_TOPIC';
+const UPDATE_FAV_PHOTO_IDS = 'UPDATE_FAV_PHOTO_IDS';
+const CLOSE_MODAL = 'CLOSE_MODAL';
 
 // Define reducer function
 const reducer = (state, action) => {
@@ -35,30 +35,19 @@ const reducer = (state, action) => {
   }
 };
 
+// Define initial state
 const initialState = {
-  modalData: null,
-  favoritePhotos: [],
   photoData: [],
   topicData: [],
   selectedTopic: null,
   photosByTopic: {},
+  modalData: null,
+  favoritePhotos: [],
 };
 
+// Define custom hook
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  // Action creators
-  const setPhotoSelected = (photoData) => {
-    dispatch({ type: SET_MODAL_DATA, payload: photoData });
-  }
-
-  const updateToFavPhotoIds = (photoId) => {
-    dispatch({ type: UPDATE_FAV_PHOTO_IDS, payload: { photoId } });
-  }
-
-  const onClosePhotoDetailsModal = () => {
-    dispatch({ type: CLOSE_MODAL });
-  }
 
   useEffect(() => {
     fetch('/api/photos')
@@ -80,14 +69,27 @@ const useApplicationData = () => {
         dispatch({ type: SET_PHOTOS_BY_TOPIC, payload: { topicId, photos: data } });
       })
   };
+ 
+  const setPhotoSelected = (photoData) => {
+    dispatch({ type: SET_MODAL_DATA, payload: photoData });
+  }
+
+  const updateToFavPhotoIds = (photoId) => {
+    dispatch({ type: UPDATE_FAV_PHOTO_IDS, payload: { photoId } });
+  }
+
+  const onClosePhotoDetailsModal = () => {
+    dispatch({ type: CLOSE_MODAL });
+  }
+
   
   return {
     state,
     actions: {
+      fetchPhotosByTopic,
       setPhotoSelected,
       updateToFavPhotoIds,
-      onClosePhotoDetailsModal,
-      fetchPhotosByTopic
+      onClosePhotoDetailsModal
     }
   };
 };

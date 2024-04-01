@@ -1,4 +1,4 @@
-# Photolabs
+# PhotoLabs
 
 PhotoLabs project was developed as part of the Web Development React course. 
 PhotoLabs is a web application that allows users to explore and interact with a curated collection of photos.
@@ -22,7 +22,7 @@ PhotoLabs is built using React for the frontend and Node.js for the backend. The
 
 To get started with PhotoLabs, follow these instructions:
 
-1. Clone the repository to your local machine.
+1. Clone this repository to your local machine.
 2. Navigate to the `/frontend` directory and install frontend dependencies using `npm install`.
 3. Navigate to the `/backend` directory and install backend dependencies using `npm install`.
 4. Start the frontend development server by running `npm start` in the `/frontend` directory.
