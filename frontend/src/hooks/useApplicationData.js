@@ -1,4 +1,4 @@
-import {useReducer, useEffect} from 'react';
+import {useReducer, useEffect } from 'react';
 
 // Define action types
 const SET_PHOTO_DATA = 'SET_PHOTO_DATA'; 
@@ -7,6 +7,7 @@ const SET_MODAL_DATA = 'SET_MODAL_DATA';
 const SET_SELECTED_TOPIC = 'SET_SELECTED_TOPIC';
 const SET_PHOTOS_BY_TOPIC = 'SET_PHOTOS_BY_TOPIC';
 const UPDATE_FAV_PHOTO_IDS = 'UPDATE_FAV_PHOTO_IDS';
+const SET_LIKED_PHOTOS = 'SET_LIKED_PHOTOS';
 const CLOSE_MODAL = 'CLOSE_MODAL';
 
 // Define reducer function
@@ -28,6 +29,8 @@ const reducer = (state, action) => {
         ? state.favoritePhotos.filter(id => id !== photoId)
         : [...state.favoritePhotos, photoId];
       return { ...state, favoritePhotos };
+    case SET_LIKED_PHOTOS:
+      return { ...state, likedPhotos: action.payload };
     case CLOSE_MODAL:
       return { ...state, modalData: null };
     default:
@@ -43,6 +46,7 @@ const initialState = {
   photosByTopic: {},
   modalData: null,
   favoritePhotos: [],
+  likedPhotos:[]
 };
 
 // Define custom hook
@@ -52,21 +56,33 @@ const useApplicationData = () => {
   useEffect(() => {
     fetch('/api/photos')
       .then(response => response.json())
-      .then((data) => dispatch({ type: SET_PHOTO_DATA, payload: data }));
+      .then((data) => {
+        dispatch({ type: SET_PHOTO_DATA, payload: data })
+      });
   }, []);
   
   useEffect(() => {
     fetch('/api/topics')
       .then(response => response.json())
-      .then((data) => dispatch({ type: SET_TOPIC_DATA, payload: data }));
+      .then((data) => 
+        dispatch({ type: SET_TOPIC_DATA, payload: data }));
   }, []);
+
+  
+  const fetchLikedPhotos = () => {
+    fetch('/api/photos')
+      .then(response => response.json())
+      .then((data) => {
+        const likedPhotos = data.filter(photo => state.favoritePhotos.includes(photo.id));
+        dispatch({ type: SET_PHOTO_DATA, payload: likedPhotos });
+    });
+  }
   
   const fetchPhotosByTopic = (topicId) => {
     fetch(`/api/topics/photos/${topicId}`)
       .then(response => response.json())
       .then((data) => {
-        dispatch({ type: SET_SELECTED_TOPIC, payload: topicId }); 
-        dispatch({ type: SET_PHOTOS_BY_TOPIC, payload: { topicId, photos: data } });
+        dispatch({ type: SET_PHOTO_DATA, payload: data });
       })
   };
  
@@ -81,7 +97,6 @@ const useApplicationData = () => {
   const onClosePhotoDetailsModal = () => {
     dispatch({ type: CLOSE_MODAL });
   }
-
   
   return {
     state,
@@ -89,7 +104,8 @@ const useApplicationData = () => {
       fetchPhotosByTopic,
       setPhotoSelected,
       updateToFavPhotoIds,
-      onClosePhotoDetailsModal
+      fetchLikedPhotos,
+      onClosePhotoDetailsModal,
     }
   };
 };
